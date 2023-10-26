@@ -1,4 +1,3 @@
-#FROM wordpress:fpm
 FROM wordpress:fpm-alpine
 
 # Install Nginx
