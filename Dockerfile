@@ -2,15 +2,15 @@
 FROM wordpress:fpm-alpine
 
 # Install Nginx
-RUN apk add --no-cache nginx
+RUN apk add --update --no-cache nginx && rm -Rf /var/cache/apk/*
 # Update the default Nginx configuration
-RUN rm /etc/nginx/conf.d/default.conf
+RUN if [ -f "/etc/nginx/conf.d/default.conf" ]; then rm /etc/nginx/conf.d/default.conf; fi
 COPY config/nginx.conf /etc/nginx/conf.d/default.conf
 # Pm ondemand to save RAM
 RUN sed -i 's/pm = dynamic/pm = ondemand/g' /usr/local/etc/php-fpm.d/www.conf
 
 #RUN apt-get update && apt-get -y install curl unzip
-RUN apk add --update curl unzip && rm -Rf /var/cache/apk/*
+RUN apk add --update --no-cache curl unzip && rm -Rf /var/cache/apk/*
 
 # Sqlite integration plugin
 RUN curl -o /tmp/wpplugin.zip https://downloads.wordpress.org/plugin/sqlite-integration.1.8.1.zip
