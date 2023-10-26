@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Install MySQL server and client packages
-apk add --update --no-cache mysql mysql-client
-rm -rf /var/cache/apk/*
 # Create a user group for MySQL
 groupadd mysql
 chown -R mysql:mysql /var/lib/mysql

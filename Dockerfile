@@ -25,6 +25,7 @@ ENV OBJ_CACHE=none
 ENV PHP_VER=8
 RUN if ! [ -d "/home" ]; then mkdir /home && chmod -R a+x /home; fi
 RUN apk add --update --no-cache \
+	mysql mysql-client \
 	curl rsync patch litespeed \
 	php$PHP_VER-curl php$PHP_VER-gd php$PHP_VER-mysqli php$PHP_VER-mbstring php$PHP_VER-exif php$PHP_VER-ctype \
 	php$PHP_VER-fileinfo php$PHP_VER-intl php$PHP_VER-zip php$PHP_VER-iconv php$PHP_VER-dom php$PHP_VER-opcache \
