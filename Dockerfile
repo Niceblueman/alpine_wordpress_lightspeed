@@ -5,9 +5,9 @@ VOLUME ["/var/www/wp-content"]
 
 ENV WP_VER=latest
 ENV WP_PREFIX=wp_
-ENV DB_NAME=
-ENV DB_USER=
-ENV DB_PASS=
+ENV DB_NAME=db
+ENV DB_USER=user
+ENV DB_PASS=toor
 ENV DB_HOST=localhost
 ENV DB_CHARSET=utf8
 ENV DB_SSL=false
@@ -33,6 +33,7 @@ RUN apk add --update --no-cache \
 
 COPY image/httpd_config.patch /etc/litespeed/httpd_config.patch
 COPY image/vhost.conf /etc/litespeed/vhosts/default.conf
+COPY image/install-mysql.sh /home/install-mysql.sh
 COPY image/wp-config.patch /var/www/wp-config.patch
 COPY image/health_check.php /var/www/health_check.php
 COPY image/php.ini /etc/php$PHP_VER/php.ini

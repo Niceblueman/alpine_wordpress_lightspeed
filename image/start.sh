@@ -25,6 +25,16 @@ else
 	echo "Wordpress not found. Installing Wordpress. Version: $WP_VER"
 	install=true
 fi
+db_installer="/home/install-mysql.sh"
+if [[ -f $db_installer ]]; then
+	echo "Starting script db_installer..."
+	chmod +rx "$db_installer"
+	bash "$db_installer"
+	chmod -rwx "$db_installer"
+	echo "db_installer script executed."
+else
+	echo "INFO: You can customize this site by adding your own database";
+fi
 if [[ $install == true ]]; then
 	HYPHEN=""
 	SUBDOM=""
