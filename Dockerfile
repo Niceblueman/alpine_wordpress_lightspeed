@@ -23,7 +23,7 @@ ENV INIT_SCRIPT=
 ENV OBJ_CACHE=none
 # Adjust properly if needed:
 ENV PHP_VER=8
-
+RUN if ! [ -d "/home" ]; mkdir /home && chmod -R a+x /home; fi
 RUN apk add --update --no-cache \
 	curl rsync patch litespeed \
 	php$PHP_VER-curl php$PHP_VER-gd php$PHP_VER-mysqli php$PHP_VER-mbstring php$PHP_VER-exif php$PHP_VER-ctype \
