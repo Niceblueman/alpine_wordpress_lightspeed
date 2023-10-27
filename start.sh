@@ -53,4 +53,4 @@ ENDL
 fi
 
 # start all the services
-/usr/local/bin/supervisord -n
+sudo systemctl restart supervisor

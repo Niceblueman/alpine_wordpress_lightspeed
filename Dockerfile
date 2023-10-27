@@ -36,9 +36,11 @@ RUN find /etc/php5/cli/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;
 ADD ./nginx-site.conf /etc/nginx/sites-available/default
 
 # Supervisor Config
-RUN /usr/bin/easy_install supervisor
-RUN /usr/bin/easy_install supervisor-stdout
-ADD ./supervisord.conf /etc/supervisord.conf
+RUN sudo apt install supervisor -y
+RUN sudo systemctl status supervisor
+ADD ./supervisord.conf /etc/supervisor/supervisord.conf
+RUN sudo supervisorctl reread
+RUN sudo supervisorctl update
 
 # Install Wordpress
 ADD https://wordpress.org/latest.tar.gz /usr/share/nginx/latest.tar.gz
