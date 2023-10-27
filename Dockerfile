@@ -37,7 +37,7 @@ ADD ./nginx-site.conf /etc/nginx/sites-available/default
 
 # Supervisor Config
 RUN sudo apt install supervisor -y
-RUN sudo systemctl status supervisor
+RUN sudo service supervisor status
 ADD ./supervisord.conf /etc/supervisor/supervisord.conf
 RUN sudo supervisorctl reread
 RUN sudo supervisorctl update
