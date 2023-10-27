@@ -1,2 +1,2 @@
 # alpine_wordpress_lightspeed
-#alpine - #wordpress - #lightspeed docker image 
+#ubuntu - #wordpress - #nginx docker image 
